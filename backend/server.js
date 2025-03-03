@@ -15,6 +15,10 @@ const port = process.env.PORT || 5005;
 app.use(cors());
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
 app.use(`/api/auth`, require(`./routes/auth`));
 app.use(`/api/documents`, require(`./routes/documents`));
 
