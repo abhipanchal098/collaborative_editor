@@ -33,7 +33,7 @@ const Editor = () => {
             }
             setTimeout(() => {
                 setIsTyping('');
-            }, 1000);
+            }, 1500);
         });
 
         socket.on('load-document', (document) => {
