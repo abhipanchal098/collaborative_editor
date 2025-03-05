@@ -1,4 +1,5 @@
-export const BASE_URL = 'http://localhost:5005';
+// export const BASE_URL = 'http://localhost:5005';
+export const BASE_URL = 'https://collaborative-editor-uuon.onrender.com';
 
 export const getApiService = async (endpoint) => {
     const headers = {
