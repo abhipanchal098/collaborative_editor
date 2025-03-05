@@ -58,7 +58,7 @@ async function login(req, res) {
 
         let user = await User.findOne({ email });
         if (!user) {
-            return res.status(400).json({ status: 0, message: 'User already exists' });
+            return res.status(400).json({ status: 0, message: 'User not found with these credentils' });
         }
 
         let isMatch = await bcrypt.compare(password, user.password);
