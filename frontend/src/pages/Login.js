@@ -17,10 +17,12 @@ const Login = () => {
                 localStorage.setItem("token", response.token);
                 navigate("/documents", { replace: true }); // ✅ Redirect
             } else {
-                setError("Invalid credentials");
+                console.log(response);
+                setError(response.message);
             }
         } catch (err) {
-            setError("Invalid credentials");
+            console.log(err);
+            setError(err.message);
         }
     };
 

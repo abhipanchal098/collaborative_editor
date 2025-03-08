@@ -13,14 +13,10 @@ export const getApiService = async (endpoint) => {
             headers: headers
         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
         return await response.json();
     } catch (error) {
         console.error('Error in GET service:', error);
-        throw error;
+        return error;
     }
 };
 
@@ -37,14 +33,10 @@ export const postApiService = async (endpoint, data) => {
             body: JSON.stringify(data)
         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
         return await response.json();
     } catch (error) {
         console.error('Error in POST service:', error);
-        throw error;
+        return error;
     }
 };
 
@@ -61,14 +53,10 @@ export const putApiService = async (endpoint, data) => {
             body: JSON.stringify(data)
         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
         return await response.json();
     } catch (error) {
         console.error('Error in PUT service:', error);
-        throw error;
+        return error;
     }
 };
 
@@ -84,13 +72,9 @@ export const deleteApiService = async (endpoint) => {
             headers: headers
         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
         return await response.json();
     } catch (error) {
         console.error('Error in DELETE service:', error);
-        throw error;
+        return error;
     }
 };

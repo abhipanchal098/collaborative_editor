@@ -3,6 +3,7 @@ const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const http = require('http');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 const server = http.createServer(app);
@@ -12,8 +13,19 @@ initializeSocket(server); // Initialize socket with server
 
 const port = process.env.PORT || 5005;
 
+// Apply CORS and JSON middleware
 app.use(cors());
 app.use(express.json());
+
+// Rate Limiting Middleware
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // Limit each IP to 100 requests per window
+    message: { message: "Too many requests, please try again later." },
+    headers: true, // Send rate limit headers
+});
+
+app.use(limiter); // Apply rate limiting to all routes
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
