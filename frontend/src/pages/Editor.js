@@ -42,7 +42,7 @@ const Editor = () => {
 
         // cleanup
         return () => socket.off('receive-changes');
-    }, []);
+    }, [id]);
 
     const handleOnBlur = (key, e) => {
         const newContent = {
